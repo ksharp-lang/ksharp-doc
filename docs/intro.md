@@ -6,4 +6,4 @@ slug: /
 
 # k#
 
-k# is a functional programming language, strong typed system
+k# is a functional programming language, impure with a strong typed system
