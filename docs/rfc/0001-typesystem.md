@@ -49,7 +49,7 @@ type Sum = Int -> Int -> Int
 *k#* should support parametric types over all forms of types. e.g 
 
 ```haskell
-type Map = Map a b
+type Map a b = Map a b
 type Option a = Some a | None
 type ToString a = a -> String
 ```
@@ -72,6 +72,7 @@ trait Num a =
 
 ```haskell
 type (Num a) => sum a = a -> a -> a 
+type (Num k) => NumMap k v= Map k v
 ```
 
 ## Using labels on types
@@ -104,3 +105,12 @@ All types in *k#* can be instanced using a function with the name of the type. e
 user1 = (User name="hjerez" password="A password")
 user2 = (User "hjerez" "A password")
 ```
+
+## Built-in types
+
+1. List = `[a]`, `[Int]`, `List type`
+2. Map = `{Int -> Int}`, `Map key value`
+3. Tuple = `Int * Int`
+4. Numbers = `Byte`, `Short`, `Int`, `UInt`, `Long`, `Double`, `Float`
+5. String = `[Char]` or `String`
+6. Character = `Char`
