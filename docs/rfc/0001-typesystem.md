@@ -1,0 +1,97 @@
+---
+title: k# Type system
+---
+
+# k# Type system
+
+The propose model for *k#* is algebraic data types. All types should start with a capital letter. `Int`, `String`
+
+## Type aliases
+
+It will possible in *k#* define aliases of types. The benefit of aliases is to encode meaning into the type.
+
+```haskell
+type Age = Int
+```
+
+## Type product - Tuples
+
+Type product allows create type combinations. It is called tuples in other languages.
+
+```fsharp
+type Point = Int * Int
+```
+
+## Unions type
+
+Union types is used to define many combinations of types. they require a `Type Label` at the beginning. Each type label is separated using pipe `|`
+
+```haskell
+type Maybe a = Maybe a | Nothing
+```
+
+Union types also are used to define enumerations
+
+```haskell
+type Weekend = Saturday | Sunday
+```
+
+## Function types
+
+*k#* use currying function style like $\lambda$ calculus. Each function receive an argument and return a value. 
+
+```haskell
+type sum = Int -> Int -> Int
+```
+
+## Parametric types
+
+*k#* should support parametric types over all forms of types. e.g 
+
+```haskell
+type Map = Map a b
+type Option a = Some a | None
+type toString a = a -> String
+```
+
+Parameters should stars with a lowercase letter.
+
+## Traits 
+
+*k#* support traits to define a type which support a collection of functions. A trait requires a type over the methods apply. This type is a *parameter*
+
+```scala
+trait Num a =
+    sum  :: a -> a -> a
+    prod :: a -> a -> a
+```
+
+### Traits in algebraic types
+
+*k#* allows constraint over types. Used a lot with functions types
+
+```haskell
+type (Num a) => sum a = a -> a -> a 
+```
+
+## Using labels on types
+
+*k#* allows labeled types while composing new types. It allows define records
+
+```haskell
+type User = 
+    name: String 
+    password: String
+
+-- Same as
+type User = String String
+```
+
+behind the scene *k#* creates functions for the labels with the definition
+
+```haskell
+type name = User -> String
+type name = User -> String -> User
+type password = User -> String
+type password = User -> String -> User
+```

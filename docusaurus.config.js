@@ -75,7 +75,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["haskell"],
+        additionalLanguages: ["clike", "java", "haskell", "fsharp", "scala"],
       },
     }),
 };
