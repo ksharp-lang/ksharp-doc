@@ -27,7 +27,7 @@ type Point = Int * Int
 Union types is used to define many combinations of types. they require a `Type Label` at the beginning. Each type label is separated using pipe `|`
 
 ```haskell
-type Maybe a = Maybe a | Nothing
+type Maybe a = Just a | Nothing
 ```
 
 Union types also are used to define enumerations
