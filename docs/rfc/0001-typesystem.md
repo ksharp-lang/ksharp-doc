@@ -41,7 +41,7 @@ type Weekend = Saturday | Sunday
 *k#* use currying function style like $\lambda$ calculus. Each function receive an argument and return a value. 
 
 ```haskell
-type sum = Int -> Int -> Int
+type Sum = Int -> Int -> Int
 ```
 
 ## Parametric types
@@ -51,7 +51,7 @@ type sum = Int -> Int -> Int
 ```haskell
 type Map = Map a b
 type Option a = Some a | None
-type toString a = a -> String
+type ToString a = a -> String
 ```
 
 Parameters should stars with a lowercase letter.
@@ -94,4 +94,13 @@ type name = User -> String
 type name = User -> String -> User
 type password = User -> String
 type password = User -> String -> User
+```
+
+## Instancing types
+
+All types in *k#* can be instanced using a function with the name of the type. e.g
+
+```haskell
+user1 = (User name="hjerez" password="A password")
+user2 = (User "hjerez" "A password")
 ```
