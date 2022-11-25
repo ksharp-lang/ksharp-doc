@@ -68,11 +68,11 @@ trait Num a =
 
 ### Traits in algebraic types
 
-*k#* allows constraint over types. Used a lot with functions types
+Use a trait is similar to using a type
 
 ```haskell
-type (Num a) => sum a = a -> a -> a 
-type (Num k) => NumMap k v= Map k v
+type Sum a = Num a -> Num a -> Num a 
+type NumMap k v= Map (Num k) v
 ```
 
 ## Using labels on types
