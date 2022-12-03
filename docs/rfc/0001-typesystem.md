@@ -14,12 +14,12 @@ It will possible in *k#* define aliases of types. The benefit of aliases is to e
 type Age = Int
 ```
 
-## Type product - Tuples
+## Tuples
 
 Type product allows create type combinations. It is called tuples in other languages.
 
 ```fsharp
-type Point = Int * Int
+type Point = Int, Int
 ```
 
 ## Unions type
@@ -75,13 +75,21 @@ type Sum a = Num a -> Num a -> Num a
 type NumMap k v= Map (Num k) v
 ```
 
+### Intersection types
+
+They are used when you need a type who implements many traits
+
+```haskell
+type OrdNum = Ord & Num
+```
+
 ## Using labels on types
 
 *k#* allows labeled types while composing new types. It allows define records
 
 ```haskell
 type User = 
-    name: String 
+    name: String, 
     password: String
 
 -- Same as
@@ -95,6 +103,21 @@ type name = User -> String
 type name = User -> String -> User
 type password = User -> String
 type password = User -> String -> User
+```
+
+:::note Note 
+
+Labels has meaning on tuples and unions, for the other types they are informative.
+
+:::
+
+## Constrained types
+
+They are like aliases but with a expression, creating a sub set of the type
+
+```fsharp
+type PositiveNum a = Num a => it >= 0
+type Age = Int => it > 0 && it < 200
 ```
 
 ## Instancing types
