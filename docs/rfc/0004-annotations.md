@@ -10,7 +10,7 @@ If the goal is produce code, refers to macros.
 
 :::
 
-Annotations go before the element marked using `@annotationName`
+Annotations go before the element who is going to be marked, using `@annotationName`
 
 ```typescript
 @sideEffect
