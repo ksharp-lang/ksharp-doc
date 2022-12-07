@@ -4,7 +4,6 @@ title: Lambda calculus
 
 # $\lambda$-calculus
 
-> Everything in *k#* is a function
 
 ## Defining functions
 
