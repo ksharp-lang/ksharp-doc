@@ -124,3 +124,35 @@ Hence, if $M \twoheadrightarrow_\beta N$, there exists a chain of single-step $\
 $$
 M \equiv M_0 \to_\beta M_1 \to_\beta M_2 \to_\beta \dots \to_\beta M_{n-2} \to_\beta M_{n-1} \to_\beta M_{n} \equiv N
 $$
+
+**Lemma:**
+
+1. $\twoheadrightarrow_\beta$ extends $\to_\beta$, i.e. if $M \to_\beta N$, then  $M \twoheadrightarrow_\beta N$.
+2. $\twoheadrightarrow_\beta$ is reflesive and transitive, i.e:
+   1. (*refl*): for all $M: M \twoheadrightarrow_\beta M$,
+   2. (*trans*): for all $L$, $M$ and $N$: if $L \twoheadrightarrow_\beta M$ and $M \twoheadrightarrow_\beta N$ then $L \twoheadrightarrow_\beta N$.
+
+## $\beta$-conversion, $\beta$-equality, $=_\beta$
+
+$M =_\beta N$ if there is an $n \ge 0$ and there are terms $M_0$ to $M_n$ such that $M_0 \equiv M, M_n \equiv N$ and for all $i$ such that $0 \le i \lt n$: either $M_i \to_\beta M_{i+1}$ or $M_{i+1} \to_\beta M_i$
+
+For example: $(\lambda y. yv)z =_\beta (\lambda x. zx)v$ since we have the following chain, where $\leftarrow_\beta$ is the inverse of $\to_\beta$:
+
+$$
+
+(\lambda y. yv)z \to_\beta zv \leftarrow_\beta (\lambda x. zx)v
+
+$$
+
+$=_\beta$ is an equivalence relation, hence *reflexive, symmetric and transitive*
+
+## $\beta$-normal form ($\beta$-nf)
+
+1. $M$ is in $\beta$-normal form if $M$ does not contain any redex
+2. $M$ has a $\beta$-normal form if there is an $N$ in $\beta$-normal form that $M =_\beta N$. Such an N is a $\beta$-normal form of $M$
+
+When $M$ is in $\beta$-nf, then $M \twoheadrightarrow_\beta N$ implies $M \equiv N$
+
+## Fixed point theorem
+
+For all $L \in \Lambda$ there is $M \in \Lambda$ such that $LM =_\beta M$. e.g the function $f(n) = n^2$, has two fixed points $0$ and $1$. The successor function $s(n) = n + 1$ has no fixed point at all.
