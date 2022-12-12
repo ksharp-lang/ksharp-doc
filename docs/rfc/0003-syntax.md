@@ -58,6 +58,8 @@ Indentation can be spaces or tabs
 | 11  | &#124;&#124; |
 | 12  | `=`          |
 
+# Grammar
+
 ## Top level expressions
 
 ### Imports
