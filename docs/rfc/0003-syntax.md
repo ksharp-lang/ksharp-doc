@@ -8,17 +8,17 @@ title: k# syntax
 
 ### Tokens
 
-|                                     |                                                      |
-| ----------------------------------- | ---------------------------------------------------- |
-| UppercaseWord                       | Represent types                                      |
-| LowercaseWord                       | Represent parameters, functions or keywords          |
-| WhiteSpace                          | `\n` is not a whitespace                             |
-| NewLine                             | `\n`                                                 |
-| Integer                             | 1 1000                                               |
-| Float                               | 1.5 .6                                               |
-| Operator                            | <code>+ - * / % > < = ! &  $ # ^ ? . \ &#124;</code> |
-| Brackets, Parenthesis, Curly Braces | `[] () {}`                                           |
-| Comma                               | `,`                                                  |
+|                                         |                                                      |
+| --------------------------------------- | ---------------------------------------------------- |
+| UppercaseWord                           | Represent types                                      |
+| LowercaseWord                           | Represent parameters, functions or keywords          |
+| WhiteSpace                              | `\n` is not a whitespace                             |
+| NewLine                                 | `\n`                                                 |
+| Integer                                 | 1 1000                                               |
+| Float                                   | 1.5 .6                                               |
+| Operator# `#` depends of the precedence | <code>+ - * / % > < = ! &  $ # ^ ? . \ &#124;</code> |
+| Brackets, Parenthesis, Curly Braces     | `[] () {}`                                           |
+| Comma                                   | `,`                                                  |
 
 ### General notes 
 
@@ -40,6 +40,23 @@ let sum =
 Indentation can be spaces or tabs
 
 :::
+
+## Operator precedence
+
+| #   | Operator     |
+| --- | ------------ |
+| 1   | `**`         |
+| 2   | `* / %`      |
+| 3   | `+ -`        |
+| 4   | `<< >>`      |
+| 5   | `< <= >= >`  |
+| 6   | `== !=`      |
+| 7   | `&`          |
+| 8   | `^`          |
+| 9   | &#124;       |
+| 10  | `&&`         |
+| 11  | &#124;&#124; |
+| 12  | `=`          |
 
 ## Top level expressions
 
