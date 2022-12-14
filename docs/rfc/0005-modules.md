@@ -24,7 +24,7 @@ internal type Integer = Int
 
 :::note
 
-You can't use a `internal` type with a private `function`
+You can't use a `internal` type with a `pub function`
 
 :::
 
