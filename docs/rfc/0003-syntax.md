@@ -64,17 +64,27 @@ Indentation can be spaces or tabs
 
 ### Imports
 
-> lowerCaseWord(import) [**package**](#package) 
+> lowerCaseWord(import) [**moduleName**](#modulename) lowerCaseWord(as) lowerCaseName:**key** 
 
-### Package
+### ModuleName
 
-> lowerCaseWord (operator(.) lowerCaseWord)
+> lowerCaseWord (operator(.) lowerCaseWord)*
+
+:::tip
+
+more about [modules](0005-modules.md)
+
+:::
 
 ### Type
 
-> lowerCaseWord(type) upperCaseWord operator(=) [**typeValue**](#typevalue)
+> lowerCaseWord(internal)? lowerCaseWord(type) upperCaseWord operator12(=) [**typeValue**](#typevalue)
+
+:::tip
 
 more about [type system](0001-typesystem.md)
+
+:::
 
 ## typeValue
 
