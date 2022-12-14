@@ -17,6 +17,7 @@ pub sum a b = a + b
 
 use `internal` to prevent export a type declaration
 
+
 ```kotlin
 internal type Integer = Int
 ```
