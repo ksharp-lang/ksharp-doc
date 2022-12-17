@@ -78,7 +78,7 @@ more about [modules](0005-modules.md)
 
 ### Type
 
-> lowerCaseWord(internal)? lowerCaseWord(type) upperCaseWord operator12(=) [**typeValue**](#typevalue)
+> lowerCaseWord(internal)? lowerCaseWord(type) upperCaseWord (lowerCaseWord:**param**)* operator12(=) [**typeValue**](#typevalue)
 
 :::tip
 
@@ -88,10 +88,22 @@ more about [type system](0001-typesystem.md)
 
 ## typeValue
 
+> (openParenthesis [**typeItem**](#type-item) closeParenthesis) ||  [**typeItem**](#type-item)
+
+### Type Item
+
 ### Alias types
 
-> upperCaseWord newLine
+> upperCaseWord
 
 ### Tuples types
 
-> [**type**](#type) (, [**type**](#type))+
+> [**typeValue**](#typeValue) (operator(,) [**typeValue**](#typeValue))+
+
+### Function types
+
+> [**typeValue**](#typeValue) (operator3(->) [**typeValue**](#typeValue))+
+
+### Parametric types
+
+> [**typeValue**](#typeValue) (lowerCaseWord)*
