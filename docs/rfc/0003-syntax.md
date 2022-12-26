@@ -62,15 +62,15 @@ Indentation can be spaces or tabs
 
 ## Top level expressions
 
-### Imports
+### Import
 
-> lowerCaseWord(import) [**moduleName**](#modulename) lowerCaseWord(as) lowerCaseName:**key** 
+> LowerCaseWord="import" [moduleName](#modulename) LowerCaseWord="as" LowerCaseName:**key** 
 
-### ModuleName
+#### ModuleName
 
-> lowerCaseWord (operator(.) lowerCaseWord)*
+> LowerCaseWord (Operator="." LowerCaseWord)*
 
-:::tip
+:::note
 
 more about [modules](0005-modules.md)
 
@@ -78,32 +78,46 @@ more about [modules](0005-modules.md)
 
 ### Type
 
-> lowerCaseWord(internal)? lowerCaseWord(type) upperCaseWord (lowerCaseWord:**param**)* operator12(=) [**typeValue**](#typevalue)
+> (LowerCaseWord="internal")? LowerCaseWord="type" [typeName](#typename) Operator12="=" [typeExpression](#typeexpression) 
 
-:::tip
+:::note
 
 more about [type system](0001-typesystem.md)
 
 :::
 
-## typeValue
+#### typeName 
 
-> (openParenthesis [**typeItem**](#type-item) closeParenthesis) ||  [**typeItem**](#type-item)
+> UpperCaseWord (LowerCaseWord:**params**)*
 
-### Type Item
+#### typeExpression 
 
-### Alias types
+> [typeValue](#typeValue) ([typeSetSeparator](#typesetseparator) [typeValue](#typevalue))*
 
-> upperCaseWord
+#### typeValue
 
-### Tuples types
+> [simpleType](#simpletype) ([typeValueSeparator](#typevalueseparator) [typeValue](#typevalue))?
 
-> [**typeValue**](#typeValue) (operator(,) [**typeValue**](#typeValue))+
+#### simpleType
 
-### Function types
+> (OpenParenthesis [typeValue](#typevalue) CloseParenthesis) | Label? [typeVariable](#typevariable) 
 
-> [**typeValue**](#typeValue) (operator3(->) [**typeValue**](#typeValue))+
+#### typeValueSeparator
 
-### Parametric types
+> Operator3="->" | Comma
 
-> [**typeValue**](#typeValue) (lowerCaseWord)*
+#### typeSetOperator
+
+> Operator9="|" | Operator7="&"
+
+#### typeVariable
+
+> LowerCaseWord | UpperCaseWord
+
+### Trait
+
+> (LowerCaseWord="internal")? LowerCaseWord="trait" [typeName](#typename) Operator12="=" ([traitFunction](#traitfunction))+
+
+#### traitFunction
+
+> LowerCaseWord Operator="::" [typeValue](#typevalue)

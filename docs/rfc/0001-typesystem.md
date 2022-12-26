@@ -107,7 +107,7 @@ type password = User -> String -> User
 
 :::note Note 
 
-Labels has meaning on tuples and unions, for the other types they are informative.
+Labels have meaning on tuples and unions, for the other types they are informative.
 
 :::
 
@@ -131,9 +131,9 @@ user2 = (User "hjerez" "A password")
 
 ## Built-in types
 
-1. List = `[a]`, `[Int]`, `List type`
-2. Map = `{Int -> Int}`, `Map key value`
-3. Tuple = `Int * Int`
+1. List = `List type`
+2. Map = `Map key value`
+3. Tuple = `Int, Int`
 4. Numbers = `Byte`, `Short`, `Int`, `UInt`, `Long`, `Double`, `Float`
-5. String = `[Char]` or `String`
+5. String = `List Char` or `String`
 6. Character = `Char`
