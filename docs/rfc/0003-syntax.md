@@ -62,15 +62,15 @@ Indentation can be spaces or tabs
 
 ## Top level expressions
 
-### Imports
+### Import
 
-> lowerCaseWord(import) [**moduleName**](#modulename) lowerCaseWord(as) lowerCaseName:**key** 
+> LowerCaseWord="import" [moduleName](#modulename) LowerCaseWord="as" LowerCaseName:**key** 
 
-### ModuleName
+#### ModuleName
 
-> lowerCaseWord (operator(.) lowerCaseWord)*
+> LowerCaseWord (Operator="." LowerCaseWord)*
 
-:::tip
+:::note
 
 more about [modules](0005-modules.md)
 
@@ -78,20 +78,46 @@ more about [modules](0005-modules.md)
 
 ### Type
 
-> lowerCaseWord(internal)? lowerCaseWord(type) upperCaseWord operator12(=) [**typeValue**](#typevalue)
+> (LowerCaseWord="internal")? LowerCaseWord="type" [typeName](#typename) Operator12="=" [typeExpression](#typeexpression) 
 
-:::tip
+:::note
 
 more about [type system](0001-typesystem.md)
 
 :::
 
-## typeValue
+#### typeName 
 
-### Alias types
+> UpperCaseWord (LowerCaseWord:**params**)*
 
-> upperCaseWord newLine
+#### typeExpression 
 
-### Tuples types
+> [typeValue](#typeValue) ([typeSetSeparator](#typesetseparator) [typeValue](#typevalue))*
 
-> [**type**](#type) (, [**type**](#type))+
+#### typeValue
+
+> [simpleType](#simpletype) ([typeValueSeparator](#typevalueseparator) [typeValue](#typevalue))?
+
+#### simpleType
+
+> (OpenParenthesis [typeValue](#typevalue) CloseParenthesis) | Label? [typeVariable](#typevariable) 
+
+#### typeValueSeparator
+
+> Operator3="->" | Comma
+
+#### typeSetOperator
+
+> Operator9="|" | Operator7="&"
+
+#### typeVariable
+
+> LowerCaseWord | UpperCaseWord
+
+### Trait
+
+> (LowerCaseWord="internal")? LowerCaseWord="trait" [typeName](#typename) Operator12="=" ([traitFunction](#traitfunction))+
+
+#### traitFunction
+
+> LowerCaseWord Operator="::" [typeValue](#typevalue)
