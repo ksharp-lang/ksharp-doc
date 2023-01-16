@@ -29,6 +29,21 @@ k# uses UTF-8 for character and strings
 
 :::
 
+### Escape characters
+
+|      |                 |
+| ---- | --------------- |
+| `\t` | tab             |
+| `\'` | `'`             |
+| `\"` | `"`             |
+| `\r` | carriage return |
+| `\\` | `\`             |
+| `\n` | new line        |
+| `\f` | form feed       |
+| `\b` | back space      |
+
+`k#` also supports unicode escape characters `\uxxxx` that represent a hexadecimal value from `\u0000` to `\uFFFF`
+
 ## Numbers
 
 ### Integers
@@ -69,4 +84,24 @@ k# uses UTF-8 for character and strings
 
 ```fsharp
 0o1236
+```
+
+## Collections
+
+### Lists
+
+```haskell
+[1, 2, 3]
+```
+
+### Maps
+
+```javascript
+{key: value, key: value}
+```
+
+### Set
+
+```clojure
+#{1, 2, 4, 5}
 ```
