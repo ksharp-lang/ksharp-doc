@@ -102,6 +102,6 @@ k# uses UTF-8 for character and strings
 
 ### Set
 
-```haskell
-#(1, 2, 4, 5)
+```f#
+#[1, 2, 4, 5]
 ```
