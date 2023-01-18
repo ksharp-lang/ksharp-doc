@@ -97,7 +97,7 @@ k# uses UTF-8 for character and strings
 ### Maps
 
 ```javascript
-{key: value, key: value}
+{"key": value, "key": value}
 ```
 
 ### Set
