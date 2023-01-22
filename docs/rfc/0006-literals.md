@@ -105,3 +105,17 @@ k# uses UTF-8 for character and strings
 ```f#
 #[1, 2, 4, 5]
 ```
+
+### Tuples
+
+They are expressions followed by `,`
+
+```fsharp
+1, 2
+```
+
+With `list` and `sets` you must surround the tuple with parenthesis
+
+```fsharp
+[(1, 2), (3, 4)]
+```
