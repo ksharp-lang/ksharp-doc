@@ -44,7 +44,7 @@ x = sum5 3 -- x is 8
 
 :::note 
 
-For operator precedence look [here](/rfc/syntax#operator-precedence)
+For operator precedence look [here](0003-syntax.md#operator-precedence)
 
 :::
 
