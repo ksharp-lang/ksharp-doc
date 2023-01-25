@@ -57,7 +57,7 @@ Indentation can be spaces or tabs
 | 3   | `&&`         |
 | 2   | &#124;&#124; |
 | 1   | `$`          |
-| 0   | `=`          |
+| 0   | `.`          |
 
 # Grammar
 
