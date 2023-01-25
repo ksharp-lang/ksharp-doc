@@ -2,7 +2,7 @@
 title: Lambda calculus
 ---
 
-# $\lambda$-calculus
+# Functions
 
 
 ## Defining functions
@@ -48,7 +48,7 @@ For operator precedence look [here](0003-syntax.md#operator-precedence)
 
 :::
 
-By default all operators are infix functions. 
+All operators are infix functions. 
 
 ```haskell
 1 + 2
@@ -58,4 +58,18 @@ To use the operator as prefix function wrap the operator inside parenthesis
 
 ```haskell
 (+) 1 2
+```
+
+## Function precedence
+
+function has less precedence than operators.
+
+```haskell
+abs -3 * 4 
+```
+
+is the same as
+
+```haskell
+(double 3) * 5
 ```
