@@ -12,7 +12,7 @@ the module name is `ksharp.common.file`
 Be default all functions are private and all types are public, to make a function visible in other scopes add `pub` scope
 
 ```rust
-pub sum a b = a + b
+pub fn sum a b = a + b
 ```
 
 use `internal` to prevent export a type declaration
@@ -35,3 +35,17 @@ use `import` expressions to load the public terms of a module
 ```dart
 import ksharp.common.file as file
 ```
+
+### Accessing a term inside a module
+
+By using the '.' operator you can access the functions inside a module. 
+
+```rust
+file.load "File Name"
+```
+
+:::note
+
+Spaces is not allowed between module key, `.` and function value
+
+:::

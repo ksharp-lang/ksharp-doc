@@ -15,9 +15,8 @@ sum a b = a + b
 
 *k#* tries to infer the types of the function. You can also define the function types:
 
-```haskell
-sum :: (Num a) => a -> a -> a
-sum a b = a + b
+```fsharp
+sum a: Num b: Num = a + b
 ```
 
 ## Currying
