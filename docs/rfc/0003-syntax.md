@@ -37,7 +37,7 @@ let sum =
 
 :::note Note 
 
-Indentation can be spaces or tabs
+Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 :::
 
