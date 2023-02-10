@@ -102,7 +102,7 @@ k# uses UTF-8 for character and strings
 
 ### Set
 
-```f#
+```fsharp
 #[1, 2, 4, 5]
 ```
 
