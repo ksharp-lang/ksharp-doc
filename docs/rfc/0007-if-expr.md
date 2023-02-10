@@ -26,3 +26,11 @@ if expr then
     if expr2 then trueExpr
 else falseExpr
 ```
+
+## If with match assignments
+
+You can use match assignments in `if` conditions, the if will return the `then expr` if the match assignments assert true
+
+```haskell
+if x = 10 && 20 = y then x + y else x 
+```
