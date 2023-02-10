@@ -89,7 +89,7 @@ type OrdNum = Ord & Num
 
 ```haskell
 type User = 
-    name: String, 
+    name: String
     password: String
 
 -- Same as
