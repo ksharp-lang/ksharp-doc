@@ -49,3 +49,19 @@ file.load "File Name"
 Spaces is not allowed between module key, `.` and function value
 
 :::
+
+### Cloning functions from different modules
+
+You can clone functions using `@clone` macro. 
+
+```kotlin
+@clone newFuncName functionToClone
+```
+
+Cloning allow use external functions as constant values. 
+
+:::warning
+
+Only works with function defined in the same library. 
+
+:::
