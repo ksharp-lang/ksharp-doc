@@ -44,6 +44,17 @@ type Weekend = Saturday | Sunday
 type Sum = Int -> Int -> Int
 ```
 
+### Function type declarations
+
+Functions also can define their types using type declarations
+
+```haskell
+add :: Num a -> Num a -> Num a
+add a b = a + b
+```
+
+Those type declaration are optional, `k#` can infer them when compiling the functions
+
 ## Parametric types
 
 *k#* should support parametric types over all forms of types. e.g 
