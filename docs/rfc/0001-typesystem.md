@@ -148,3 +148,4 @@ user2 = (User "hjerez" "A password")
 4. Numbers = `Byte`, `Short`, `Int`, `UInt`, `Long`, `Double`, `Float`
 5. String = `List Char` or `String`
 6. Character = `Char`
+7. Unit type = `()`
