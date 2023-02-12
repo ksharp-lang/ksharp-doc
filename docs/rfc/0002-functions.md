@@ -13,10 +13,11 @@ Function name should star with a lowercase letter
 sum a b = a + b
 ```
 
-*k#* tries to infer the types of the function. You can also define the function types:
+*k#* tries to infer the types of the function. You can also define the function types using type declarations:
 
 ```fsharp
-sum a: Num b: Num = a + b
+sum :: Num -> Num -> Num
+sum a b = a + b
 ```
 
 ## Currying
@@ -24,7 +25,7 @@ sum a: Num b: Num = a + b
 *k#* allows currying functions
 
 ```haskell
--- sum2 :: (Num a) => a -> a
+-- sum2 :: Num a -> Num a -> Num a
 sum2 = sum 2
 ```
 
