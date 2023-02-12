@@ -64,3 +64,9 @@ The keys matched must be exists in the map expression at the right
 ```kotlin
 {"key1": x, "key2": y} = {"key1": "value"} //error key2 is not in the map expression at the right
 ```
+
+:::note 
+
+the match value (left expression) must be a constant value. That include functions that always return a constant value or is evaluated to a constant value.
+
+:::
