@@ -2,9 +2,7 @@
 title: Match expressions
 ---
 
-# Case expressions
-
-# Let expression
+# Match expressions
 
 Use `match` expressions to create expressions that are executed if a match assignment is true
 
@@ -37,16 +35,16 @@ match expr with
 
 ## Calling functions in match clauses
 
-`k#` allows call a function with the expression being matched. Use `%` into the expression to represent the expression being matched
+If you want to use the expr into a match clause, you can combine many clauses with `&&` 
 
 ```fsharp
 match expr with
-    even % -> "Even"
+    x && even x -> "Even"
     _ -> "Odd"
 ```
 
 :::note
 
-To know more about the expressions used in let check [match assignment expressions](#match-assigment)
+To know more about the expressions used in match check [match assignment expressions](#match-assigment)
 
 :::
