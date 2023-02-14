@@ -2,7 +2,7 @@
 title: Annotations
 ---
 
-Annotations in k# are used to influence the compiler and optimizer.
+Annotations in `k#` are used to influence the compiler and optimizer.
 
 :::note
 
