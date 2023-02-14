@@ -12,7 +12,7 @@ the module name is `ksharp.common.file`
 Be default all functions are private and all types are public, to make a function visible in other scopes add `pub` scope
 
 ```rust
-pub fn sum a b = a + b
+pub sum a b = a + b
 ```
 
 use `internal` to prevent export a type declaration
