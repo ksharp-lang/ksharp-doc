@@ -14,7 +14,7 @@ Annotations go before the element who is going to be marked, using `@annotationN
 
 ```typescript
 @sideEffect
-let log x = println x 
+log x = println x 
 ```
 
 ## Annotations
@@ -25,10 +25,10 @@ Functions marked with this annotation has side effects, so calling this function
 
 ```typescript
 @sideEffect
-let log x = println x
+log x = println x
 
 @impure
-let random = rand
+random = rand
 ```
 :::note
 
@@ -41,9 +41,9 @@ If a function `a` use a impure function `b` then `a` is impure
 Used to define the name of the function, depending the target language
 
 ```typescript
-@name("round-value" for=["clojure"])
+@name("round-value", for=["clojure"])
 @name("RoundValue", for=["c#", "f#"])
-let roundValue value decimals = ... 
+roundValue value decimals = ... 
 ```
 
 :::note Note
@@ -57,6 +57,58 @@ Compiler support different rules for function names depending the language.
 Instruct the compiler the function should compile only for target language
 
 ```typescript
-@if("java" "c#")
-let fn = ... //if target language is java or c# compiler compiles this function
+@if(["java", "c#"])
+fn = ... //if target language is java or c# compiler compiles this function
 ```
+
+### native
+
+Instruct the compiler the implementation for an specific language is implemented outside, using the compiler backend.
+
+```typescript
+@native(["java"])
+(+) :: Num a -> Num a -> Num a
+(+) a a = native
+```
+
+If the language is not defined, it means the function is native for all languages
+
+:::note Note
+
+Native functions require a declaration. All functions required an expression, use `native` function to specify that the function expression is native 
+
+:::
+
+## Annotation value types supported
+
+The annotation values can be of the following types:
+
+1. String
+2. Number
+3. Boolean: true, false
+4. Annotation
+5. List of String, Number or Annotations
+
+All values inside annotation should have a label, the first value could not have a label, in this case the label is default
+
+```typescript
+@if(default=["java"])
+
+// the same as
+
+@if(["java"])
+```
+
+:::warning
+
+If an annotation has the same label for a value, the las define value is used.
+
+```typescript
+@if("java", "c#")
+
+// is the  same as
+
+@if("c#")
+```
+
+:::
