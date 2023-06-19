@@ -61,24 +61,6 @@ Instruct the compiler the function should compile only for target language
 fn = ... //if target language is java or c# compiler compiles this function
 ```
 
-### native
-
-Instruct the compiler the implementation for an specific language is implemented outside, using the compiler backend.
-
-```typescript
-@native(["java"])
-(+) :: Num a -> Num a -> Num a
-(+) a a = native
-```
-
-If the language is not defined, it means the function is native for all languages
-
-:::note Note
-
-Native functions require a declaration. All functions required an expression, use `native` function to specify that the function expression is native 
-
-:::
-
 ## Annotation value types supported
 
 The annotation values can be of the following types:

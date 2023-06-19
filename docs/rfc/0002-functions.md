@@ -73,3 +73,11 @@ is the same as
 ```haskell
 (double 3) * 5
 ```
+
+## Native functions
+
+Native functions are defined by the target language. To define a native function in `k#` just use the `native` modifier with the function name and arguments but without expression
+
+```java
+native sum a b
+```
