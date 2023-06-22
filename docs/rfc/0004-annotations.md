@@ -32,7 +32,43 @@ random = rand
 ```
 :::note
 
-If a function `a` use a impure function `b` then `a` is impure
+If a function `a` use a impure function `b` then `a` is impure.
+
+:::
+
+:::tip
+
+The `@impure` annotation is always calculated, this annotation is for documentation purposes, compiler always ignore the annotation.
+
+:::
+
+### pure
+
+Functions marked with this annotation has not side effects, so calling this function is guarantied return the same result
+
+```typescript
+@pure
+native sum a b
+```
+
+:::note
+
+The `@pure` only applies for native functions. uses in other functions are ignored by the compiler
+
+:::
+
+### constant
+
+Functions marked with this annotation are considered constant values
+
+```typescript
+@constant
+native pi
+```
+
+:::note
+
+The `@constant` only applies for native functions. uses in other functions are ignored by the compiler
 
 :::
 
