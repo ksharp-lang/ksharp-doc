@@ -57,6 +57,21 @@ The `@pure` only applies for native functions. uses in other functions are ignor
 
 :::
 
+### constant
+
+Functions marked with this annotation are considered constant values
+
+```typescript
+@constant
+native pi
+```
+
+:::note
+
+The `@constant` only applies for native functions. uses in other functions are ignored by the compiler
+
+:::
+
 ### name
 
 Used to define the name of the function, depending the target language
