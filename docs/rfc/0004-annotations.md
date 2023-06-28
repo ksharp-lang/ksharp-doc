@@ -88,6 +88,21 @@ Compiler support different rules for function names depending the language.
 
 :::
 
+### doc 
+
+Used to define documentation over types and functions
+
+```typescript
+@doc("sum two numbers **using** ...")
+specialSum a b = ...
+```
+
+:::note Note
+
+Documentation supports markdown syntax
+
+:::
+
 ### if
 
 Instruct the compiler the function should compile only for target language
