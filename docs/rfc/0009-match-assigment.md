@@ -65,6 +65,22 @@ The keys matched must be exists in the map expression at the right
 {"key1": x, "key2": y} = {"key1": "value"} //error key2 is not in the map expression at the right
 ```
 
+## Conditional matches
+
+It is possible to use `&&` and `||` to add guards to matches
+
+```kotlin
+x && isEven x = 10 //bind 10 to x if the binding isEven
+```
+
+## Grouping matches
+
+You can group conditions using parenthesis
+
+```kotlin
+x && (isEven x || isLessThan x 9) = 10 //bind 10 to x if the binding isEven and isLessThan 9
+```
+
 :::note 
 
 the match value (left expression) must be a constant value. That include functions that always return a constant value or is evaluated to a constant value.
