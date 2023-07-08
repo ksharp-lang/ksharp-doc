@@ -87,6 +87,7 @@ const config = {
           "dart",
           "kotlin",
           "clojure",
+          "bnf",
         ],
       },
     }),
