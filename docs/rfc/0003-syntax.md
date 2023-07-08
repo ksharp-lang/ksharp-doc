@@ -43,33 +43,52 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 ## Operator precedence
 
-| #   | Operator     |
-| --- | ------------ |
-| 12  | `**`         |
-| 11  | `* / %`      |
-| 10  | `+ -`        |
-| 9   | `<< >>`      |
-| 8   | `< <= >= >`  |
-| 7   | `== !=`      |
-| 6   | `&`          |
-| 5   | `^`          |
-| 4   | &#124;       |
-| 3   | `&&`         |
-| 2   | &#124;&#124; |
-| 1   | `$`          |
-| 0   | `.`          |
+| #   | Operator     | Associativity |
+| --- | ------------ | ------------- |
+| 12  | `**`         | left          |
+| 11  | `* / %`      | left          |
+| 10  | `+ -`        | left          |
+| 9   | `<< >>`      | left          |
+| 8   | `< <= >= >`  | left          |
+| 7   | `== !=`      | left          |
+| 6   | `&`          | left          |
+| 5   | `^`          | left          |
+| 4   | &#124;       | left          |
+| 3   | `&&`         | left          |
+| 2   | &#124;&#124; | left          |
+| 1   | `$`          | left          |
+| 0   | `.`          | left          |
 
 # Grammar
+
+## Lexical tokens
+
+### Built-in Tokens
+
+| token           | Definition                                          |
+| --------------- | --------------------------------------------------- |
+| letter          | Unicode categories: lowercase, uppercase, titlecase |
+| lowerCaseLetter | Unicode lowercase character                         |
+| upperCaseLetter | Unicode uppercase character                         |
+| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                        |
+
+### Tokens
+
+```bnf
+<wordLetter> ::= <letter> | <digit> | "_"
+<lowerCaseWord> ::= <lowerCaseLetter> <wordLetter>*
+<upperCaseWord> ::= <upperCaseLetter> <wordLetter>*
+```
 
 ## Top level expressions
 
 ### Import
 
-> LowerCaseWord="import" [moduleName](#modulename) LowerCaseWord="as" LowerCaseName:**key** 
-
-#### ModuleName
-
-> LowerCaseWord (Operator="." LowerCaseWord)*
+```bnf
+<import> ::= "import" <moduleName> ("as" <key>)?
+<key>    ::= <lowerCaseWord>
+<moduleName> ::= <lowerCaseWord> ("." <lowerCaseWord>)*
+```
 
 :::note
 
