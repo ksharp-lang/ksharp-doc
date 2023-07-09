@@ -6,6 +6,14 @@ title: Indentation
 
 `k#` allows use indentation for legibility. It is flexible about using spaces or tabs. 
 
+The indentation use offsets to define the boundary of an expression. 
+
+:::note
+
+To know more look the [syntax document](/rfc/syntax). Offsets are defined using `<o>` token
+
+:::
+
 ## Expressions and indentation
 
 You can use indentation with expressions to avoid use parenthesis when using operators. e.g this expression require parenthesis to make the sum an argument for the function

@@ -47,6 +47,7 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 ### Built-in Tokens
 
+<<<<<<< HEAD
 | token           | Definition                                                                          |
 | --------------- | ----------------------------------------------------------------------------------- |
 | letter          | Unicode categories: lowercase, uppercase, titlecase                                 |
@@ -56,6 +57,16 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 | o               | Represent an allowed [indentation offset](/rfc/indentation)                         |
 | whiteSpace      | " ", "\t"                                                                           |
 | operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator |
+=======
+| token           | Definition                                                  |
+| --------------- | ----------------------------------------------------------- |
+| letter          | Unicode categories: lowercase, uppercase, titlecase         |
+| lowerCaseLetter | Unicode lowercase character                                 |
+| upperCaseLetter | Unicode uppercase character                                 |
+| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                                |
+| o               | Represent an allowed [indentation offset](/rfc/indentation) |
+| whiteSpace      | " ", "\t"                                                   |
+>>>>>>> origin/main
 
 :::note 
 
