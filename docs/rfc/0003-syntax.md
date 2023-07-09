@@ -4,33 +4,15 @@ title: k# syntax
 
 # K# Syntax
 
-## Lexer
-
-### Tokens
-
-|                                         |                                                      |
-| --------------------------------------- | ---------------------------------------------------- |
-| UppercaseWord                           | Represent types                                      |
-| LowercaseWord                           | Represent parameters, functions or keywords          |
-| WhiteSpace                              | `\n` is not a whitespace                             |
-| NewLine                                 | `\n`                                                 |
-| Integer                                 | 1 1000                                               |
-| Float                                   | 1.5 .6                                               |
-| Operator# `#` depends of the precedence | <code>+ - * / % > < = ! &  $ # ^ ? . \ &#124;</code> |
-| Brackets, Parenthesis, Curly Braces     | `[] () {}`                                           |
-| Comma                                   | `,`                                                  |
-
-### General notes 
-
-Each token can be separated by one or many `WhiteSpace` tokens. 
+## General notes 
 
 ### Expression blocks
 
-Using blocks is possible to divide the expression in many lines. The following lines should be have an indentation. All the lines with the same indentation level are part of the same expression e.g
+Using blocks is possible to divide the expression in many lines. The following lines should be have an indentation. All the lines within the same indentation offset are part of the same expression e.g
 
-```
+```f#
 let sum = 
-    if condition then
+    if condition then 
         trueExpr
     else falseExpr
 ```
@@ -41,7 +23,7 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 :::
 
-## Operator precedence
+### Operator precedence and associativity
 
 | #   | Operator     | Associativity |
 | --- | ------------ | ------------- |
@@ -65,14 +47,6 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 ### Built-in Tokens
 
-<<<<<<< syntax-doc
-| token           | Definition                                          |
-| --------------- | --------------------------------------------------- |
-| letter          | Unicode categories: lowercase, uppercase, titlecase |
-| lowerCaseLetter | Unicode lowercase character                         |
-| upperCaseLetter | Unicode uppercase character                         |
-| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                        |
-=======
 | token           | Definition                                                                          |
 | --------------- | ----------------------------------------------------------------------------------- |
 | letter          | Unicode categories: lowercase, uppercase, titlecase                                 |
@@ -88,7 +62,6 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 Each token can be separated by one or many `<whiteSpace>` tokens. 
 
 :::
->>>>>>> local
 
 ### Tokens
 
@@ -107,7 +80,7 @@ Each token can be separated by one or many `<whiteSpace>` tokens.
 ### Import
 
 ```bnf
-<import> ::= "import" <moduleName> ("as" <key>)?
+<import> ::= <o> "import" <moduleName> ("as" <key>)?
 <key>    ::= <lowerCaseWord>
 <moduleName> ::= <lowerCaseWord> ("." <lowerCaseWord>)*
 ```
@@ -118,53 +91,40 @@ more about [modules](0005-modules.md)
 
 :::
 
-### Type
+### Type and Traits
 
-> (LowerCaseWord="internal")? LowerCaseWord="type" [typeName](#typename) Operator12="=" [typeExpression](#typeexpression) 
+```bnf
+<type> ::= <o> "internal"? "type" <typeName> "=" <typeExpression>
+<trait> ::= <o> "internal"? "trait" <typeName> "=" <o> <traitFunction>+
+<typeDeclaration> ::= <o> <functionName> <typeParam>* "=" <typeValue>
+ 
+<typeName> ::= <upperCaseWord> <typeParam>*
+
+<typeExpression> ::= <o> <typeValue> (<typeSetSeparator> <typeValue>)*
+<traitFunction> ::= <functionName> "::" <o> <typeValue>
+
+<typeValue> ::= <simpleType> (<typeValueSeparator> <typeValue>)?
+
+<simpleType> ::= <label>? <typeValue>
+                 | <label>? "(" <typeValue> ")"
+                 | <label>? <typeVariable>
+
+<typeVariable> ::= <typeConstructor>
+                   | <typeParam>
+
+<functionName> ::= <lowerCaseWord>
+<typeConstructor> ::= <upperCaseWord> 
+<typeParam> ::= <lowerCaseWord>
+<label> ::= <lowerCaseWord> ":"
+
+<typeSetOperator> ::= "|" | "&"
+<typeValueOperator> ::= "->" | ","
+```
 
 :::note
 
 more about [type system](0001-typesystem.md)
 
-:::
-
-#### typeName 
-
-> UpperCaseWord (LowerCaseWord:**params**)*
-
-#### typeExpression 
-
-> [typeValue](#typeValue) ([typeSetSeparator](#typesetseparator) [typeValue](#typevalue))*
-
-#### typeValue
-
-<<<<<<< syntax-doc
-> [simpleType](#simpletype) ([typeValueSeparator](#typevalueseparator) [typeValue](#typevalue))?
-
-#### simpleType
-
-> (OpenParenthesis [typeValue](#typevalue) CloseParenthesis) | Label? [typeVariable](#typevariable) 
-
-#### typeValueSeparator
-
-> Operator3="->" | Comma
-
-#### typeSetOperator
-
-> Operator9="|" | Operator7="&"
-
-#### typeVariable
-
-> LowerCaseWord | UpperCaseWord
-
-### Trait
-
-> (LowerCaseWord="internal")? LowerCaseWord="trait" [typeName](#typename) Operator12="=" ([traitFunction](#traitfunction))+
-
-#### traitFunction
-
-> LowerCaseWord Operator="::" [typeValue](#typevalue)
-=======
 :::
 
 
@@ -193,4 +153,3 @@ more about [type system](0001-typesystem.md)
 more about [annotations](0004-annotations.md)
 
 :::
->>>>>>> local
