@@ -65,12 +65,30 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 ### Built-in Tokens
 
+<<<<<<< syntax-doc
 | token           | Definition                                          |
 | --------------- | --------------------------------------------------- |
 | letter          | Unicode categories: lowercase, uppercase, titlecase |
 | lowerCaseLetter | Unicode lowercase character                         |
 | upperCaseLetter | Unicode uppercase character                         |
 | digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                        |
+=======
+| token           | Definition                                                                          |
+| --------------- | ----------------------------------------------------------------------------------- |
+| letter          | Unicode categories: lowercase, uppercase, titlecase                                 |
+| lowerCaseLetter | Unicode lowercase character                                                         |
+| upperCaseLetter | Unicode uppercase character                                                         |
+| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                                                        |
+| o               | Represent an allowed [indentation offset](/rfc/indentation)                         |
+| whiteSpace      | " ", "\t"                                                                           |
+| operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator |
+
+:::note 
+
+Each token can be separated by one or many `<whiteSpace>` tokens. 
+
+:::
+>>>>>>> local
 
 ### Tokens
 
@@ -78,6 +96,10 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 <wordLetter> ::= <letter> | <digit> | "_"
 <lowerCaseWord> ::= <lowerCaseLetter> <wordLetter>*
 <upperCaseWord> ::= <upperCaseLetter> <wordLetter>*
+<word> ::= <lowerCaseWord> | <upperCaseWord>
+<functionName>  ::= <lowerCaseWord> (<operator> <word>)+
+<string> ::= "\"" <unicodeChar> "\""
+<multiLineString> ::= "\"\"\"" <unicodeChar> "\"\"\""
 ```
 
 ## Top level expressions
@@ -116,6 +138,7 @@ more about [type system](0001-typesystem.md)
 
 #### typeValue
 
+<<<<<<< syntax-doc
 > [simpleType](#simpletype) ([typeValueSeparator](#typevalueseparator) [typeValue](#typevalue))?
 
 #### simpleType
@@ -141,3 +164,33 @@ more about [type system](0001-typesystem.md)
 #### traitFunction
 
 > LowerCaseWord Operator="::" [typeValue](#typevalue)
+=======
+:::
+
+
+### Annotations
+
+```bnf
+<annotation> ::= <o> "@" <annotationName> <annotationParams>?
+
+<annotationName> ::= <lowerCaseWord>
+<annotationParams> ::= "(" ")" 
+                       | <o> "(" <annotationParam> <o> <annotationParam>* ")"
+<annotationParam> ::= <annotationParamName> "=" <annotationParamValue>
+                      | <annotationParamValue>
+<annotationParamName> ::= <lowerCaseWord> | <upperCaseWord> | <functionName>
+<annotationParamValue> ::= <annotation>
+                           | <array> 
+                           | <string> 
+                           | <multiLineString> 
+                           | <boolLiteral>
+<array> ::= "[" <o> <annotationParamValue> ("," <o> <annotationParamValue>)* "]"
+<boolLiteral> ::= "True" | "False"
+```
+
+:::note
+
+more about [annotations](0004-annotations.md)
+
+:::
+>>>>>>> local
