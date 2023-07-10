@@ -53,8 +53,9 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 | lowerCaseLetter | Unicode lowercase character                                                         |
 | upperCaseLetter | Unicode uppercase character                                                         |
 | digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                                                        |
-| +               | Represent an allowed [indentation offset](/rfc/indentation)                         |
-| *               | Represent an optional allowed [indentation offset](/rfc/indentation)                |
+| +               | Represent a normal [indentation offset](/rfc/indentation)                           |
+| *               | Represent a repeating [indentation offset](/rfc/indentation)                        |
+| ?               | Represent an optional [indentation offset](/rfc/indentation)                        |
 | whiteSpace      | " ", "\t"                                                                           |
 | operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator |
 
@@ -105,13 +106,13 @@ more about [modules](0005-modules.md)
 
 ```bnf
 <type> ::= <+> "internal"? "type" <typeName> "=" <typeExpression>
-<trait> ::= <+> "internal"? "trait" <typeName> "=" <+> <traitFunction>+
+<trait> ::= <+> "internal"? "trait" <typeName> "=" <*> <traitFunction>+
 <typeDeclaration> ::= <+> <functionName> <typeParam>* "=" <typeValue>
  
 <typeName> ::= <upperCaseWord> <typeParam>*
 
-<typeExpression> ::= <*> <typeValue> (<typeSetSeparator> <typeValue>)*
-<traitFunction> ::= <functionName> "::" <*> <typeValue>
+<typeExpression> ::= <?> <typeValue> (<typeSetSeparator> <typeValue>)*
+<traitFunction> ::= <functionName> "::" <?> <typeValue>
 
 <typeValue> ::= <simpleType> (<typeValueSeparator> <typeValue>)?
 
@@ -145,7 +146,7 @@ more about [type system](0001-typesystem.md)
 
 <annotationName> ::= <lowerCaseWord>
 <annotationParams> ::= "(" ")" 
-                       | <*> "(" <annotationParam> <*> <annotationParam>* ")"
+                       | <?> "(" <annotationParam> <?> <annotationParam>* ")"
 <annotationParam> ::= <annotationParamName> "=" <annotationParamValue>
                       | <annotationParamValue>
 <annotationParamName> ::= <lowerCaseWord> | <upperCaseWord> | <functionName>
@@ -154,7 +155,7 @@ more about [type system](0001-typesystem.md)
                            | <string> 
                            | <multiLineString> 
                            | <boolLiteral>
-<array> ::= "[" <*> <annotationParamValue> ("," <*> <annotationParamValue>)* "]"
+<array> ::= "[" <?> <annotationParamValue> ("," <?> <annotationParamValue>)* "]"
 <boolLiteral> ::= "True" | "False"
 ```
 
@@ -217,12 +218,12 @@ more about [annotations](0004-annotations.md)
 <operatorFunctionName> ::= "(" <operator> ")"
 
 <ifExpr> ::= <+> "if" <expression> "then" <expression> "else" <expression>
-<letExpr> ::= <+> "let" <letBinding>+ "then" <expression>
-<matchExpr> ::= <+> "match" <expression> "with" <matchBranch>+
+<letExpr> ::= <+> "let" <*> <letBinding>+ "then" <expression>
+<matchExpr> ::= <+> "match" <*> <expression> "with" <matchBranch>+
 <letBinding> ::= <matchBinding> = <expression>
 <matchBranch> ::= <matchBinding> "then" <expression>
 
-<functionCall> ::= <functionCallName> <+> <functionCallParams>?
+<functionCall> ::= <functionCallName> <*> <functionCallParams>?
 <functionCallName> ::= <functionName> | <operatorFunctionName>
 <functionCallParams> ::= <exprValue>+
 ```
