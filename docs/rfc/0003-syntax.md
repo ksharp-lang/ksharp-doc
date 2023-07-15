@@ -56,6 +56,7 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 | +               | Represent a normal [indentation offset](/rfc/indentation)                           |
 | *               | Represent a repeating [indentation offset](/rfc/indentation)                        |
 | ?               | Represent an optional [indentation offset](/rfc/indentation)                        |
+| &#124;          | Represent a normal aligned [indentation offset](/rfc/indentation)                   |
 | whiteSpace      | " ", "\t"                                                                           |
 | operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator |
 
@@ -218,12 +219,12 @@ more about [annotations](0004-annotations.md)
 <operatorFunctionName> ::= "(" <operator> ")"
 
 <ifExpr> ::= <+> "if" <expression> "then" <expression> "else" <expression>
-<letExpr> ::= <+> "let" <*> <letBinding>+ "then" <expression>
+<letExpr> ::= <|> "let" <*> <letBinding>+ "then" <expression>
 <matchExpr> ::= <+> "match" <*> <expression> "with" <matchBranch>+
 <letBinding> ::= <matchBinding> = <expression>
 <matchBranch> ::= <matchBinding> "then" <expression>
 
-<functionCall> ::= <functionCallName> <*> <functionCallParams>?
+<functionCall> ::= <functionCallName> <functionCallParams>?
 <functionCallName> ::= <functionName> | <operatorFunctionName>
 <functionCallParams> ::= <exprValue>+
 ```
