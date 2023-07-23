@@ -47,18 +47,19 @@ Indentation can be spaces or tabs. More about [indentation](#indentation)
 
 ### Built-in Tokens
 
-| token           | Definition                                                                          |
-| --------------- | ----------------------------------------------------------------------------------- |
-| letter          | Unicode categories: lowercase, uppercase, titlecase                                 |
-| lowerCaseLetter | Unicode lowercase character                                                         |
-| upperCaseLetter | Unicode uppercase character                                                         |
-| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                                                        |
-| +               | Represent a normal [indentation offset](/rfc/indentation)                           |
-| *               | Represent a repeating [indentation offset](/rfc/indentation)                        |
-| ?               | Represent an optional [indentation offset](/rfc/indentation)                        |
-| &#124;          | Represent a normal aligned [indentation offset](/rfc/indentation)                   |
-| whiteSpace      | " ", "\t"                                                                           |
-| operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator |
+| token           | Definition                                                                                          |
+| --------------- | --------------------------------------------------------------------------------------------------- |
+| letter          | Unicode categories: lowercase, uppercase, titlecase                                                 |
+| lowerCaseLetter | Unicode lowercase character                                                                         |
+| upperCaseLetter | Unicode uppercase character                                                                         |
+| digit           | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9                                                                        |
+| +               | Represent a normal [indentation offset](/rfc/indentation)                                           |
+| ?n              | Represent a optional [indentation offset](/rfc/indentation) using the startOffset of the next token |
+| *               | Represent a repeating [indentation offset](/rfc/indentation)                                        |
+| ?               | Represent an optional [indentation offset](/rfc/indentation)                                        |
+| &#124;          | Represent a normal aligned [indentation offset](/rfc/indentation)                                   |
+| whiteSpace      | " ", "\t"                                                                                           |
+| operator        | Any [supported operator](#operator-precedence-and-associativity) or custom operator                 |
 
 :::note 
 
@@ -74,6 +75,8 @@ Each token can be separated by one or many `<whiteSpace>` tokens.
 <upperCaseWord> ::= <upperCaseLetter> <wordLetter>*
 <word> ::= <lowerCaseWord> | <upperCaseWord>
 <functionName>  ::= <lowerCaseWord> (<operator> <word>)+
+                    | "if"
+                    | "(" <operator> ")"
 <character> ::= "'" <unicodeChar> "'"
 <string> ::= "\"" <unicodeChar>+ "\""
 <multiLineString> ::= "\"\"\"" <unicodeChar> "\"\"\""
@@ -87,7 +90,26 @@ Each token can be separated by one or many `<whiteSpace>` tokens.
 <float> ::= <digit>+ "." <digit>+
 ```
 
-## Top level expressions
+## Module
+
+```bnf
+<module> ::= <import>
+           | <annotatedTopLevelExpression>
+
+<annotatedTopLevelExpression> ::= <annotation>* <topLevelExpression>
+
+<topLevelExpression> ::=  <type>
+                        | <trait>
+                        | <typeDeclaration>
+                        | <function>
+                        | <traitImpl>
+```
+
+:::note
+
+more about [modules](0005-modules.md)
+
+:::
 
 ### Import
 
@@ -97,9 +119,29 @@ Each token can be separated by one or many `<whiteSpace>` tokens.
 <moduleName> ::= <lowerCaseWord> ("." <lowerCaseWord>)*
 ```
 
+### Annotations
+
+```bnf
+<annotation> ::= "@" <+> <annotationName> <annotationParams>?
+
+<annotationName> ::= <lowerCaseWord>
+<annotationParams> ::= "(" ")" 
+                       | "(" <?> <annotationParam>+ ")"
+<annotationParam> ::= <annotationParamName> "=" <annotationParamValue>
+                      | <annotationParamValue>
+<annotationParamName> ::= <lowerCaseWord> | <upperCaseWord> | <functionName>
+<annotationParamValue> ::= <annotation>
+                           | <array> 
+                           | <string> 
+                           | <multiLineString> 
+                           | <boolLiteral>
+<array> ::= "[" <?> <annotationParamValue> ("," <annotationParamValue>)* "]"
+<boolLiteral> ::= "True" | "False"
+```
+
 :::note
 
-more about [modules](0005-modules.md)
+more about [annotations](0004-annotations.md)
 
 :::
 
@@ -124,7 +166,6 @@ more about [modules](0005-modules.md)
 <typeVariable> ::= <typeConstructor>
                    | <typeParam>
 
-<functionName> ::= <lowerCaseWord>
 <typeConstructor> ::= <upperCaseWord> 
 <typeParam> ::= <lowerCaseWord>
 <label> ::= <lowerCaseWord> ":"
@@ -139,37 +180,36 @@ more about [type system](0001-typesystem.md)
 
 :::
 
-
-### Annotations
+### Traits Implementation
 
 ```bnf
-<annotation> ::= <+> "@" <annotationName> <annotationParams>?
+<traitImpl> ::= <+> "internal" "impl" <traitName> "for" <typeName> "=" <*> <implFunction>+
+<traitName> ::= <upperCaseWord> <lowerCaseWord>
+<typeName> ::= <upperCaseWord>
 
-<annotationName> ::= <lowerCaseWord>
-<annotationParams> ::= "(" ")" 
-                       | <?> "(" <annotationParam> <?> <annotationParam>* ")"
-<annotationParam> ::= <annotationParamName> "=" <annotationParamValue>
-                      | <annotationParamValue>
-<annotationParamName> ::= <lowerCaseWord> | <upperCaseWord> | <functionName>
-<annotationParamValue> ::= <annotation>
-                           | <array> 
-                           | <string> 
-                           | <multiLineString> 
-                           | <boolLiteral>
-<array> ::= "[" <?> <annotationParamValue> ("," <?> <annotationParamValue>)* "]"
-<boolLiteral> ::= "True" | "False"
+<implFunction> ::= <functionName> <+> <functionParams> "=" <expression>
+```
+
+### Functions
+
+```bnf
+<function> ::= <nativeFunction> | <normalFunction>
+<nativeFunction> ::= "native" "pub"? <functionName> <+> <functionParams>
+
+<normalFunction> ::= "pub"? <functionName> <+> <functionParams> "=" <expression>
+<functionParams> ::= <lowerCaseWord>*
 ```
 
 :::note
 
-more about [annotations](0004-annotations.md)
+more about [functions](0002-functions.md)
 
 :::
 
 ### Expressions
 
 ```bnf
-<expression> ::= <+> <exprOperator0>
+<expression> ::= <?n> <exprOperator0>
 <exprOperator0> ::= <exprOperator1> <operator0> <exprOperator0>
 <exprOperator1> ::= <exprOperator2> <operator1> <exprOperator1>
 <exprOperator2> ::= <exprOperator3> <operator2> <exprOperator2>
@@ -211,20 +251,60 @@ more about [annotations](0004-annotations.md)
 <list> ::= "[" <expression> ("," <expression>)* "]"
 <set> ::= "#[" <expression> ("," <expression>)* "]"
 <map> ::= "{" <entry> ("," <entry>)* "}"
-<entry> ::= <expression> ":" <expression>
+<entry> ::= <exprValue> ":" <expression>
+
 <binding> ::= <lowerCaseWord> 
               | <upperCaseWord>
               | <functionName>
               | <operatorFunctionName>
 <operatorFunctionName> ::= "(" <operator> ")"
 
-<ifExpr> ::= <+> "if" <expression> "then" <expression> "else" <expression>
+<ifExpr> ::= "if" <expression> "then" <expression> "else" <expression>
 <letExpr> ::= <|> "let" <*> <letBinding>+ "then" <expression>
-<matchExpr> ::= <+> "match" <*> <expression> "with" <matchBranch>+
+<matchExpr> ::= "match" <expression> "with" <*> <matchBranch>+
 <letBinding> ::= <matchBinding> = <expression>
 <matchBranch> ::= <matchBinding> "then" <expression>
 
-<functionCall> ::= <functionCallName> <functionCallParams>?
-<functionCallName> ::= <functionName> | <operatorFunctionName>
-<functionCallParams> ::= <exprValue>+
+<functionCall> ::= <functionName> <*> <functionCallParam>*
+<functionCallParam> ::= "\n" <expression>
+                        | <exprValue>
+<tupleExpr> ::= <exprValue> ("," <exprValue>)+
 ```
+
+:::note
+
+More about
+
+1. [literals](0006-literals.md)
+2. [if expressions](0007-if-expr.md)
+3. [let expressions](0010-let-expression.md)
+4. [match expressions](0011-match-expressions.md)
+
+:::
+
+### Match Expressions
+
+```bnf
+<matchBinding> ::= "(" <matchOrBinding> ")"
+                  | <matchOrBinding>
+<matchOrBinding> ::= <matchAndBinding> ("||" <matchOrBinding>)?
+<matchAndBinding> ::= <binding> ("&&" <matchAndBinding>)?
+
+<binding> ::=  <varBinding> 
+             | <typeBinding>
+             | <listBinding>
+             | <exprBinding>
+
+<varBinding> ::= <lowerCaseWord>
+<typeBinding> ::= <upperCaseWord> <typeBindingParam>
+<typeBindingParam> ::=   <varBinding> 
+                       | <exprValue>
+<exprBinding> ::= <exprValue>
+<listBinding> ::= "[" <exprValue> ("," <exprValue>)* "|" <varBinding> "]"
+```
+
+:::note
+
+more about [match expressions](0009-match-assigment.md)
+
+:::
