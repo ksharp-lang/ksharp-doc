@@ -67,6 +67,25 @@ Each token can be separated by one or many `<whiteSpace>` tokens.
 
 :::
 
+### Keywords
+
+1. if
+2. then
+3. else
+4. let
+5. match
+6. with
+
+Functions can't have as name:
+
+1. native
+2. internal
+3. pub
+4. impl
+5. trait
+6. type
+7. import
+
 ### Tokens
 
 ```bnf
