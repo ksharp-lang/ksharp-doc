@@ -81,3 +81,7 @@ Native functions are defined by the target language. To define a native function
 ```java
 native sum a b
 ```
+
+## Function overloading
+
+Functions in `k#` don't support overloading. So you can have two functions with the same name and same arity.
