@@ -94,6 +94,20 @@ They are used when you need a type who implements many traits
 type OrdNum = Ord & Num
 ```
 
+### Type constraints
+
+`K#` defines a shortcut to assign traits to a parameter
+
+```haskell
+sum Num a => a :: a -> a -> a
+```
+
+It is the same as
+
+```haskell
+sum a :: Num a -> Num a -> Num a
+```
+
 ## Using labels on types
 
 *k#* allows labeled types while composing new types. It allows define records
