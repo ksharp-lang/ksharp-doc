@@ -46,3 +46,9 @@ impl Eq for Num =
     @name("equals" for=["java"]) 
     (=) a b = False
 ```
+
+:::note Note
+
+Impl are loaded when the module is imported.
+
+:::
