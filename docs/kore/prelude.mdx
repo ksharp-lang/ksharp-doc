@@ -2,238 +2,308 @@
 title: prelude
 ---
 
-## prelude
 
+## Types
 
-### Types
+### BigDecimal
 
-#### BigDecimal
-
-> (Num numeric<BigDecimal>)
+```haskell
+(Num numeric<BigDecimal>)
+```
 
 Signed arbitrary-precision floating point number
 
-#### BigInt
+### BigInt
 
-> (Num numeric<BigInt>)
+```haskell
+(Num numeric<BigInt>)
+```
 
 Signed arbitrary-precision integer
 
-#### Bool
+### Bool
 
-> True
-|False
+```haskell
+True
+False
+```
 
 
 
-#### Byte
+### Byte
 
-> (Num numeric<Byte>)
+```haskell
+(Num numeric<Byte>)
+```
 
 Signed 8-bit integer
 
-#### Char
+### Char
 
-> char<Char>
+```haskell
+char<Char>
+```
 
 Datatype representing a single Unicode character
 
-#### Double
+### Double
 
-> (Num numeric<Double>)
+```haskell
+(Num numeric<Double>)
+```
 
 Signed 64-bit floating point number. *This is the default type for integer numbers*
 
-#### Float
+### Float
 
-> (Num numeric<Float>)
+```haskell
+(Num numeric<Float>)
+```
 
 Signed 32-bit floating point number.
 
-#### Int
+### Int
 
-> (Num numeric<Int>)
+```haskell
+(Num numeric<Int>)
+```
 
 Signed 32-bit integer
 
-#### List
+### List
 
-> (List v)
+```haskell
+(List v)
+```
 
 
 
-#### Long
+### Long
 
-> (Num numeric<Long>)
+```haskell
+(Num numeric<Long>)
+```
 
 Signed 64-bit integer. *This is the default type for integer numbers*
 
-#### Map
+### Map
 
-> (Map k v)
-
-
-
-#### Pair
-
-> (Pair a b)
+```haskell
+(Map k v)
+```
 
 
 
-#### Set
+### Pair
 
-> (Set v)
+```haskell
+(Pair a b)
+```
 
 
 
-#### Short
+### Set
 
-> (Num numeric<Short>)
+```haskell
+(Set v)
+```
+
+
+
+### Short
+
+```haskell
+(Num numeric<Short>)
+```
 
 Signed 16-bit integer
 
-#### String
+### String
 
-> String
+```haskell
+String
+```
 
 
 
-#### Unit
+### Unit
 
-> ()
+```haskell
+()
+```
 
 The **Unit** type is the terminal object in the category of types
 
 
-### Traits
+## Traits
 
-#### Add
+### Add
 
 Allow add two types producing a new type
+[details](prelude/Add)
 
-#### Div
-
-
-
-#### Mod
+### Div
 
 
+[details](prelude/Div)
 
-#### Mul
-
-
-
-#### Pow
+### Mod
 
 
+[details](prelude/Mod)
 
-#### Sub
+### Mul
 
 
+[details](prelude/Mul)
+
+### Pow
 
 
-### Functions
+[details](prelude/Pow)
+
+### Sub
+
+
+[details](prelude/Sub)
+
+
+## Functions
 
 #### bigdec/1
 
-> (Num a) -> (Num numeric<BigDecimal>)
+```haskell
+(Num a) -> (Num numeric<BigDecimal>)
+```
 
 
 
 #### bigint/1
 
-> (Num a) -> (Num numeric<BigInt>)
+```haskell
+(Num a) -> (Num numeric<BigInt>)
+```
 
 
 
 #### byte/1
 
-> (Num a) -> (Num numeric<Byte>)
+```haskell
+(Num a) -> (Num numeric<Byte>)
+```
 
 
 
 #### double/1
 
-> (Num a) -> (Num numeric<Double>)
+```haskell
+(Num a) -> (Num numeric<Double>)
+```
 
 
 
 #### emptyList/0
 
-> Unit -> (List a)
+```haskell
+Unit -> (List a)
+```
 
 
 
 #### emptyMap/0
 
-> Unit -> (Map k v)
+```haskell
+Unit -> (Map k v)
+```
 
 
 
 #### emptySet/0
 
-> Unit -> (List a)
+```haskell
+Unit -> (List a)
+```
 
 
 
 #### float/1
 
-> (Num a) -> (Num numeric<Float>)
+```haskell
+(Num a) -> (Num numeric<Float>)
+```
 
 
 
 #### if/3
 
-> True
-|False -> a -> a -> a
+```haskell
+True
+False -> a -> a -> a
+```
 
 
 
 #### int/1
 
-> (Num a) -> (Num numeric<Int>)
+```haskell
+(Num a) -> (Num numeric<Int>)
+```
 
 
 
 #### listOf/1
 
-> a -> (List a)
+```haskell
+a -> (List a)
+```
 
 
 
 #### long/1
 
-> (Num a) -> (Num numeric<Long>)
+```haskell
+(Num a) -> (Num numeric<Long>)
+```
 
 
 
 #### mapOf/1
 
-> (Pair k v) -> (Map k v)
+```haskell
+(Pair k v) -> (Map k v)
+```
 
 
 
 #### pair/2
 
-> a -> b -> (Pair a b)
+```haskell
+a -> b -> (Pair a b)
+```
 
 
 
 #### setOf/1
 
-> a -> (Set a)
+```haskell
+a -> (Set a)
+```
 
 
 
 #### short/1
 
-> (Num a) -> (Num numeric<Short>)
+```haskell
+(Num a) -> (Num numeric<Short>)
+```
 
 
 
 #### tupleOf/1
 
-> a -> a
+```haskell
+a -> a
+```
 
 
 
