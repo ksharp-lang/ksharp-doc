@@ -66,6 +66,10 @@ const config = {
         title: "k#",
         items: [],
       },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
       footer: {
         style: "dark",
         links: [],
