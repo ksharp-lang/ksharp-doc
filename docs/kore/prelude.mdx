@@ -2,16 +2,308 @@
 title: prelude
 ---
 
-# prelude
 
-### Types
+## Types
 
-#### Int 
+### BigDecimal
 
-> type Int = Int
+```haskell
+(Num numeric<BigDecimal>)
+```
 
-Represents a 64-bit signed integer.
+Signed arbitrary-precision floating point number
 
-### Traits
+### BigInt
 
-### Functions
+```haskell
+(Num numeric<BigInt>)
+```
+
+Signed arbitrary-precision integer
+
+### Bool
+
+```haskell
+True
+False
+```
+
+
+
+### Byte
+
+```haskell
+(Num numeric<Byte>)
+```
+
+Signed 8-bit integer
+
+### Char
+
+```haskell
+char<Char>
+```
+
+Datatype representing a single Unicode character
+
+### Double
+
+```haskell
+(Num numeric<Double>)
+```
+
+Signed 64-bit floating point number. *This is the default type for integer numbers*
+
+### Float
+
+```haskell
+(Num numeric<Float>)
+```
+
+Signed 32-bit floating point number.
+
+### Int
+
+```haskell
+(Num numeric<Int>)
+```
+
+Signed 32-bit integer
+
+### List
+
+```haskell
+(List v)
+```
+
+
+
+### Long
+
+```haskell
+(Num numeric<Long>)
+```
+
+Signed 64-bit integer. *This is the default type for integer numbers*
+
+### Map
+
+```haskell
+(Map k v)
+```
+
+
+
+### Pair
+
+```haskell
+(Pair a b)
+```
+
+
+
+### Set
+
+```haskell
+(Set v)
+```
+
+
+
+### Short
+
+```haskell
+(Num numeric<Short>)
+```
+
+Signed 16-bit integer
+
+### String
+
+```haskell
+String
+```
+
+
+
+### Unit
+
+```haskell
+()
+```
+
+The **Unit** type is the terminal object in the category of types
+
+
+## Traits
+
+### Add
+
+Allow add two types producing a new type
+[details](prelude/Add)
+
+### Div
+
+
+[details](prelude/Div)
+
+### Mod
+
+
+[details](prelude/Mod)
+
+### Mul
+
+
+[details](prelude/Mul)
+
+### Pow
+
+
+[details](prelude/Pow)
+
+### Sub
+
+
+[details](prelude/Sub)
+
+
+## Functions
+
+#### bigdec/1
+
+```haskell
+(Num a) -> (Num numeric<BigDecimal>)
+```
+
+
+
+#### bigint/1
+
+```haskell
+(Num a) -> (Num numeric<BigInt>)
+```
+
+
+
+#### byte/1
+
+```haskell
+(Num a) -> (Num numeric<Byte>)
+```
+
+
+
+#### double/1
+
+```haskell
+(Num a) -> (Num numeric<Double>)
+```
+
+
+
+#### emptyList/0
+
+```haskell
+Unit -> (List a)
+```
+
+
+
+#### emptyMap/0
+
+```haskell
+Unit -> (Map k v)
+```
+
+
+
+#### emptySet/0
+
+```haskell
+Unit -> (List a)
+```
+
+
+
+#### float/1
+
+```haskell
+(Num a) -> (Num numeric<Float>)
+```
+
+
+
+#### if/3
+
+```haskell
+True
+False -> a -> a -> a
+```
+
+
+
+#### int/1
+
+```haskell
+(Num a) -> (Num numeric<Int>)
+```
+
+
+
+#### listOf/1
+
+```haskell
+a -> (List a)
+```
+
+
+
+#### long/1
+
+```haskell
+(Num a) -> (Num numeric<Long>)
+```
+
+
+
+#### mapOf/1
+
+```haskell
+(Pair k v) -> (Map k v)
+```
+
+
+
+#### pair/2
+
+```haskell
+a -> b -> (Pair a b)
+```
+
+
+
+#### setOf/1
+
+```haskell
+a -> (Set a)
+```
+
+
+
+#### short/1
+
+```haskell
+(Num a) -> (Num numeric<Short>)
+```
+
+
+
+#### tupleOf/1
+
+```haskell
+a -> a
+```
+
+
+
