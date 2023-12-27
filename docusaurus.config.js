@@ -3,8 +3,8 @@
 const lightCodeTheme = require("prism-react-renderer").themes.github;
 const darkCodeTheme = require("prism-react-renderer").themes.dracula;
 
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -37,8 +37,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: false,
         pages: false,
