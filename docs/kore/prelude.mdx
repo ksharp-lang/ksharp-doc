@@ -8,18 +8,18 @@ title: prelude
 ### BigDecimal
 
 ```haskell
-(Num numeric<BigDecimal>)
+BigDecimal
 ```
 
-Signed arbitrary-precision floating point number
+Signed 128-bit floating point number
 
 ### BigInt
 
 ```haskell
-(Num numeric<BigInt>)
+BigInt
 ```
 
-Signed arbitrary-precision integer
+Signed 128-bit integer
 
 ### Bool
 
@@ -33,7 +33,7 @@ False
 ### Byte
 
 ```haskell
-(Num numeric<Byte>)
+Byte
 ```
 
 Signed 8-bit integer
@@ -41,7 +41,7 @@ Signed 8-bit integer
 ### Char
 
 ```haskell
-char<Char>
+Char
 ```
 
 Datatype representing a single Unicode character
@@ -49,23 +49,23 @@ Datatype representing a single Unicode character
 ### Double
 
 ```haskell
-(Num numeric<Double>)
+Double
 ```
 
-Signed 64-bit floating point number. *This is the default type for integer numbers*
+Signed 64-bit floating point number
 
 ### Float
 
 ```haskell
-(Num numeric<Float>)
+Float
 ```
 
-Signed 32-bit floating point number.
+Signed 32-bit floating point number
 
 ### Int
 
 ```haskell
-(Num numeric<Int>)
+Int
 ```
 
 Signed 32-bit integer
@@ -81,10 +81,10 @@ Signed 32-bit integer
 ### Long
 
 ```haskell
-(Num numeric<Long>)
+Long
 ```
 
-Signed 64-bit integer. *This is the default type for integer numbers*
+Signed 64-bit integer
 
 ### Map
 
@@ -113,7 +113,7 @@ Signed 64-bit integer. *This is the default type for integer numbers*
 ### Short
 
 ```haskell
-(Num numeric<Short>)
+Short
 ```
 
 Signed 16-bit integer
@@ -137,35 +137,10 @@ The **Unit** type is the terminal object in the category of types
 
 ## Traits
 
-### Add
+### Num
 
-Allow add two types producing a new type
-[details](prelude/Add)
-
-### Div
-
-
-[details](prelude/Div)
-
-### Mod
-
-
-[details](prelude/Mod)
-
-### Mul
-
-
-[details](prelude/Mul)
-
-### Pow
-
-
-[details](prelude/Pow)
-
-### Sub
-
-
-[details](prelude/Sub)
+Allow operations over numeric types
+[details](prelude/Num)
 
 
 ## Functions
@@ -173,7 +148,7 @@ Allow add two types producing a new type
 #### bigdec/1
 
 ```haskell
-(Num a) -> (Num numeric<BigDecimal>)
+(Num a) -> BigDecimal
 ```
 
 
@@ -181,7 +156,7 @@ Allow add two types producing a new type
 #### bigint/1
 
 ```haskell
-(Num a) -> (Num numeric<BigInt>)
+(Num a) -> BigInt
 ```
 
 
@@ -189,7 +164,7 @@ Allow add two types producing a new type
 #### byte/1
 
 ```haskell
-(Num a) -> (Num numeric<Byte>)
+(Num a) -> Byte
 ```
 
 
@@ -197,7 +172,7 @@ Allow add two types producing a new type
 #### double/1
 
 ```haskell
-(Num a) -> (Num numeric<Double>)
+(Num a) -> Double
 ```
 
 
@@ -229,7 +204,7 @@ Unit -> (List a)
 #### float/1
 
 ```haskell
-(Num a) -> (Num numeric<Float>)
+(Num a) -> Float
 ```
 
 
@@ -246,7 +221,7 @@ False -> a -> a -> a
 #### int/1
 
 ```haskell
-(Num a) -> (Num numeric<Int>)
+(Num a) -> Int
 ```
 
 
@@ -262,7 +237,7 @@ a -> (List a)
 #### long/1
 
 ```haskell
-(Num a) -> (Num numeric<Long>)
+(Num a) -> Long
 ```
 
 
@@ -294,7 +269,7 @@ a -> (Set a)
 #### short/1
 
 ```haskell
-(Num a) -> (Num numeric<Short>)
+(Num a) -> Short
 ```
 
 
