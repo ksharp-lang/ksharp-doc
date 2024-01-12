@@ -5,6 +5,14 @@ title: prelude
 
 ## Types
 
+### Array
+
+```haskell
+(Array v)
+```
+
+
+
 ### BigDecimal
 
 ```haskell
@@ -219,6 +227,14 @@ False
 
 
 
+#### arrayOf/1
+
+```haskell
+a -> (Array a)
+```
+
+
+
 #### bigdec/1
 
 ```haskell
@@ -247,6 +263,14 @@ False
 
 ```haskell
 (Num a) -> Double
+```
+
+
+
+#### emptyArray/0
+
+```haskell
+Unit -> (Array a)
 ```
 
 
