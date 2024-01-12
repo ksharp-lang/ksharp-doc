@@ -94,6 +94,16 @@ Signed 64-bit integer
 
 
 
+### Ordering
+
+```haskell
+Less
+Equal
+Greater
+```
+
+
+
 ### Pair
 
 ```haskell
@@ -137,6 +147,11 @@ The **Unit** type is the terminal object in the category of types
 
 ## Traits
 
+### Comparable
+
+
+[details](prelude/Comparable)
+
 ### Num
 
 Allow operations over numeric types
@@ -144,6 +159,60 @@ Allow operations over numeric types
 
 
 ## Functions
+
+#### (!=)/2
+
+```haskell
+a -> a -> True
+False
+```
+
+
+
+#### (&lt;)/2
+
+```haskell
+(Num a) -> (Num a) -> True
+False
+```
+
+
+
+#### (&lt;=)/2
+
+```haskell
+(Num a) -> (Num a) -> True
+False
+```
+
+
+
+#### (==)/2
+
+```haskell
+a -> a -> True
+False
+```
+
+
+
+#### (&gt;)/2
+
+```haskell
+(Num a) -> (Num a) -> True
+False
+```
+
+
+
+#### (&gt;=)/2
+
+```haskell
+(Num a) -> (Num a) -> True
+False
+```
+
+
 
 #### bigdec/1
 
