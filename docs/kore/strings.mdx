@@ -13,6 +13,15 @@ String -> Int -> Char
 
 Return the character at the given index
 
+#### ends-with?/2
+
+```haskell
+String -> String -> True
+False
+```
+
+Return true if the string ends with the given suffix
+
 #### index/2
 
 ```haskell
@@ -28,4 +37,37 @@ String -> Int
 ```
 
 Return the number of character in a string
+
+#### lowercase/1
+
+```haskell
+String -> String
+```
+
+Return the string in lowercase
+
+#### starts-with?/2
+
+```haskell
+String -> String -> True
+False
+```
+
+Return true if the string starts with the given prefix
+
+#### trim/1
+
+```haskell
+String -> String
+```
+
+Return the string without leading and trailing whitespaces
+
+#### uppercase/1
+
+```haskell
+String -> String
+```
+
+Return the string in uppercase
 
