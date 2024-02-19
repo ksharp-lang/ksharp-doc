@@ -85,3 +85,23 @@ native sum a b
 ## Function overloading
 
 Functions in `k#` don't support overloading. So you can have two functions with the same name and same arity.
+
+## Lambdas
+
+Lambdas functions allows closure over the environment.
+
+```haskell
+fun sumX x = \y -> x + y
+```
+
+Lambda without parameters 
+
+```haskell
+fun double x = \-> x * 2
+```
+
+:::warning 
+
+The first argument in a lambda mustn't have an space about the lambda operator **(\\)**. In case of a lambda without arguments the lambda operator changes to **(\\->)**
+:::
+
