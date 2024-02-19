@@ -102,16 +102,6 @@ Signed 64-bit integer
 
 
 
-### Ordering
-
-```haskell
-Less
-Equal
-Greater
-```
-
-
-
 ### Pair
 
 ```haskell
@@ -160,11 +150,6 @@ The **Unit** type is the terminal object in the category of types
 Allow operations over numeric types
 [details](prelude/Bitwise)
 
-### Comparable
-
-
-[details](prelude/Comparable)
-
 ### Num
 
 Allow operations over numeric types
@@ -185,7 +170,7 @@ False
 #### (&lt;)/2
 
 ```haskell
-(Num a) -> (Num a) -> True
+(Comparable a) -> (Comparable a) -> True
 False
 ```
 
@@ -194,7 +179,7 @@ False
 #### (&lt;=)/2
 
 ```haskell
-(Num a) -> (Num a) -> True
+(Comparable a) -> (Comparable a) -> True
 False
 ```
 
@@ -212,7 +197,7 @@ False
 #### (&gt;)/2
 
 ```haskell
-(Num a) -> (Num a) -> True
+(Comparable a) -> (Comparable a) -> True
 False
 ```
 
@@ -221,7 +206,7 @@ False
 #### (&gt;=)/2
 
 ```haskell
-(Num a) -> (Num a) -> True
+(Comparable a) -> (Comparable a) -> True
 False
 ```
 
@@ -368,6 +353,14 @@ a -> (Set a)
 
 ```haskell
 (Num a) -> Short
+```
+
+
+
+#### str/1
+
+```haskell
+a -> String
 ```
 
 
